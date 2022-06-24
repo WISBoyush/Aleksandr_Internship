@@ -4,13 +4,20 @@
 
 def string_to_int(string):
     if not string.startswith('-') and not string.isdigit():
-        raise ValueError(f'Вами введено не число \n\n Ошибка в ({string})')
+        raise ValueError(
+            f'Вами введено не число \n\n'
+            f'Ошибка в ({string})'
+        )
     elif string.startswith('-') and not string[1:].isdigit():
-        raise ValueError(f'Вами введено не число \n\n Ошибка в ({string})')
+        raise ValueError(
+            f'Вами введено не число \n\n'
+            f'Ошибка в ({string})'
+        )
     else:
         positive = False if string.startswith('-') else True
         string = string[1:] if not positive else string
         number = 0
+
         for i in string:
             number *= 10
             number += (ord(i) - 48)
@@ -23,5 +30,6 @@ try:
     print(string_to_int('-123'))
 
     print(string_to_int('0asd123'))
+
 except ValueError as e:
     print(f'__!!! WARNING !!!__\n{e}')
